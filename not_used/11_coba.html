@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>form</title>
+    <meta name="viewport" content="width=device-width, initialscale=1">
+    <link rel="stylesheet" href="./jq/jquery.mobile.css" />
+    <script type="text/javascript" src="./jq/jquery.js"></script>
+    <script type="text/javascript" src="./jq/jquery.mobile.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input:submit').click(function () {
+                var s;
+                s = $('#myform').serialize();
+                $.post('http://192.168.1.18/pemrograman_internet/8/post1.php', s, function (resp, status) {
+                    $('#pesan').html(resp);
+                })
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div data-role="page" id="post1">
+        <div data-role="header">
+            <h3>sending data</h3>
+
+        </div>
+        <div data-role="content">
+            <form id="myform">
+                <input type="text" id="nama" name="nama" />
+                <input type="number" id="umur" name="umur" />
+                <input type="submit" value="Kirim" data-inline="true" />
+            </form>
+            <div id="pesan"></div>
+        </div>
+        <div data-theme="e" data-role="footer">
+            <h3>Internet Programming PENS</h3>
+        </div>
+    </div>
+</body>
+
+</html>
